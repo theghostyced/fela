@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="en" >
     <head>
-        <title>6.4.5. FelaComponent · Fela</title>
+        <title>6.4.9. renderToNodeList · Fela</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -61,10 +61,10 @@
     <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="FelaTheme.html" />
+    <link rel="next" href="ThemeProvider.html" />
     
     
-    <link rel="prev" href="fe.html" />
+    <link rel="prev" href="RendererProvider.html" />
     
 
     </head>
@@ -845,7 +845,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.7.4.5" data-path="FelaComponent.html">
+        <li class="chapter " data-level="1.7.4.5" data-path="FelaComponent.html">
             
                 <a href="FelaComponent.html">
             
@@ -897,7 +897,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.4.9" data-path="renderToNodeList.html">
+        <li class="chapter active" data-level="1.7.4.9" data-path="renderToNodeList.html">
             
                 <a href="renderToNodeList.html">
             
@@ -1112,7 +1112,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../../.." >6.4.5. FelaComponent</a>
+        <a href="../../.." >6.4.9. renderToNodeList</a>
     </h1>
 </div>
 
@@ -1127,169 +1127,38 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="felacomponent">FelaComponent</h1>
-<p>FelaComponent is an alternative component to the <a href="createComponent.html">createComponent</a>-HoC leveraging the render-props pattern. It uses <a href="FelaTheme.html">FelaTheme</a> internally in order to access the theme directly.</p>
-<h2 id="props">Props</h2>
+                                <h1 id="rendertonodelist">renderToNodeList</h1>
+<p>This method returns a NodeList with <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span></code> objects with the rendered CSS. This is useful for SSR (Server Side Rendering). This method uses the <a href="../fela-dom/renderToSheetList">fela-dom/renderToSheetList</a> internally.</p>
+<h2 id="arguments">Arguments</h2>
 <table>
 <thead>
 <tr>
-<th>Property</th>
+<th>Argument</th>
 <th>Type</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>style</td>
-<td><a href="../../basics/Rules.html"><em>Rule</em></a><br><a href="../../basics/Rules.html#styleobject"><em>StyleObject</em></a><br><em>Array</em>[<a href="../../basics/Rules.html"><em>Rule</em></a>, <a href="../../basics/Rules.html#styleobject"><em>StyleObject</em></a>]</td>
-<td></td>
-<td>Either a valid style object, and <a href="../../basics/Rules.html">rule</a> or an array of both</td>
-</tr>
-<tr>
-<td>children</td>
-<td><em>any</em></td>
-<td></td>
-<td>Either a render function or a primitive child.<br>If passing a render function is receives the specified render interface.</td>
-</tr>
-<tr>
-<td>as</td>
-<td><em>string</em></td>
-<td><code>div</code></td>
-<td>If children is passed a primitive child, the component will render an <code>as</code>-type DOM element with the className attached and the primitive child as content.</td>
+<td>renderer</td>
+<td><a href="../fela/Renderer.html"><em>Renderer</em></a></td>
+<td>The renderer providing the styles which are rendered to a list of sheet data.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="render-interface">Render Interface</h3>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>className</td>
-<td><em>string</em></td>
-<td></td>
-<td>The class names for the rendered <em>style</em> object</td>
-</tr>
-<tr>
-<td>children</td>
-<td><em>Element</em></td>
-<td></td>
-<td>The component children</td>
-</tr>
-<tr>
-<td>theme</td>
-<td><em>Object</em></td>
-<td><code>{}</code></td>
-<td>The theme object which is passed down via context</td>
-</tr>
-<tr>
-<td>as</td>
-<td><em>string</em></td>
-<td><code>div</code></td>
-<td>The <code>as</code> property that is passed to the component</td>
-</tr>
-</tbody>
-</table>
-<h2 id="imports">Imports</h2>
-<pre class="language-"><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> FelaComponent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;react-fela&apos;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> FelaComponent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;preact-fela&apos;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> FelaComponent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;inferno-fela&apos;</span>
-</code></pre>
-<h2 id="example">Example</h2>
-<pre class="language-"><code class="lang-javascript"><span class="token operator">&lt;</span>FelaComponent
-  style<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
-    backgroundColor<span class="token punctuation">:</span> <span class="token string">&apos;blue&apos;</span><span class="token punctuation">,</span>
-    color<span class="token punctuation">:</span> <span class="token string">&apos;red&apos;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>
-  <span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">{</span> className<span class="token punctuation">,</span> theme <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
-    <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token punctuation">{</span>className<span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token constant">I</span> am red on blue<span class="token punctuation">.</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
-  <span class="token punctuation">)</span><span class="token punctuation">}</span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>FelaComponent<span class="token operator">&gt;</span>
-</code></pre>
-<h4 id="generic-components">Generic Components</h4>
-<p>In order to create dynamically styled components using props, just like <a href="createComponent.html">createComponent</a>, we can create a component that itself renders a FelaComponent.</p>
-<pre class="language-"><code class="lang-javascript"><span class="token keyword">const</span> <span class="token function-variable function">Button</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> color<span class="token punctuation">,</span> big <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">,</span> text <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
-  <span class="token operator">&lt;</span>FelaComponent
-    style<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
-      backgroundColor<span class="token punctuation">:</span> color<span class="token punctuation">,</span>
-      fontSize<span class="token punctuation">:</span> big <span class="token operator">?</span> <span class="token number">18</span> <span class="token punctuation">:</span> <span class="token number">15</span>
-    <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>
-    <span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">{</span> className <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
-      <span class="token operator">&lt;</span>button className<span class="token operator">=</span><span class="token punctuation">{</span>className<span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token punctuation">{</span>text<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
-    <span class="token punctuation">)</span><span class="token punctuation">}</span>
-  <span class="token operator">&lt;</span><span class="token operator">/</span>FelaComponent<span class="token operator">&gt;</span>
-<span class="token punctuation">)</span>
-</code></pre>
-<h4 id="using-theme">Using Theme</h4>
-<p>To access theme properties, we can simply pass a function of theme.</p>
-<pre class="language-"><code class="lang-javascript"><span class="token keyword">const</span> <span class="token function-variable function">style</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> theme <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
-  backgroundColor<span class="token punctuation">:</span> theme<span class="token punctuation">.</span>bgPrimary<span class="token punctuation">,</span>
-  color<span class="token punctuation">:</span> <span class="token string">&apos;red&apos;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<h3 id="returns">Returns</h3>
+<p>(<em>Object[]</em>): NodeList of style sheet nodes</p>
+<h3 id="example">Example</h3>
+<pre class="language-"><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> renderToNodeList <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;react-fela&apos;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> createRenderer <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;fela&apos;</span>
 
-<span class="token operator">&lt;</span>FelaComponent style<span class="token operator">=</span><span class="token punctuation">{</span>rule<span class="token punctuation">}</span><span class="token operator">&gt;</span>
-  <span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">{</span> className<span class="token punctuation">,</span> theme <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
-    <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token punctuation">{</span>className<span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token constant">I</span> am red on <span class="token punctuation">{</span>theme<span class="token punctuation">.</span>bgPrimary<span class="token punctuation">}</span><span class="token punctuation">.</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
-  <span class="token punctuation">)</span><span class="token punctuation">}</span>
-<span class="token operator">/</span><span class="token operator">&gt;</span>
-</code></pre>
-<h4 id="style-rule-as-a-function-of-props-and-theme">Style Rule as a Function of Props and Theme</h4>
-<p>Sometimes it is desirable to style a component as a function of both theme and
-props. The <code>style</code> prop takes a callback, and passes it an object with <code>theme</code>
-and all props passed to FelaComponent except <em>style</em> and <em>children</em>.</p>
-<p>This provides an API that is both compatible with createComponent, and allows
-using an externally defined function in such use cases. Hopefully, this can
-be help performance in hot paths by not requiring a function to be created on
-every render.</p>
-<pre class="language-"><code class="lang-javascript"><span class="token keyword">const</span> <span class="token function-variable function">rule</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> theme<span class="token punctuation">,</span> bgc <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
-  backgroundColor<span class="token punctuation">:</span> bgc <span class="token operator">||</span> <span class="token string">&apos;red&apos;</span><span class="token punctuation">,</span>
-  color<span class="token punctuation">:</span> theme<span class="token punctuation">.</span>bgPrimary<span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-
-<span class="token operator">&lt;</span>FelaComponent bgc<span class="token operator">=</span><span class="token string">&apos;blue&apos;</span> style<span class="token operator">=</span><span class="token punctuation">{</span>rule<span class="token punctuation">}</span><span class="token operator">&gt;</span>
-  <span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">{</span> className<span class="token punctuation">,</span> theme <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
-    <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token punctuation">{</span>className<span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token constant">I</span> am <span class="token punctuation">{</span>theme<span class="token punctuation">.</span>bgPrimary<span class="token punctuation">}</span> on <span class="token punctuation">{</span>bgc <span class="token operator">||</span> <span class="token string">&apos;red&apos;</span><span class="token punctuation">}</span><span class="token punctuation">.</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
-  <span class="token punctuation">)</span><span class="token punctuation">}</span>
-<span class="token operator">/</span><span class="token operator">&gt;</span>
-</code></pre>
-<h4 id="shorthand-primitives">Shorthand Primitives</h4>
-<p>Instead of a render function, we can also specify a primitive element to render into.<br>
-Children will automatically be passed down. If not specified at all, it will render into a <code>div</code>.</p>
-<pre class="language-"><code class="lang-javascript"><span class="token operator">&lt;</span>FelaComponent
-  style<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
-    backgroundColor<span class="token punctuation">:</span> <span class="token string">&apos;blue&apos;</span><span class="token punctuation">,</span>
-    color<span class="token punctuation">:</span> <span class="token string">&apos;red&apos;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">}</span>
-  <span class="token keyword">as</span><span class="token operator">=</span><span class="token string">&apos;span&apos;</span>
-<span class="token operator">&gt;</span>
-  <span class="token constant">I</span> am red on blue
-<span class="token operator">&lt;</span><span class="token operator">/</span>FelaComponent<span class="token operator">&gt;</span>
-</code></pre>
-<h4 id="composition">Composition</h4>
-<p>In order to compose multiple FelaComponents we can&apos;t just concatenate classNames as they might overwrite each other due to the atomic CSS design and specificity.<br>
-We have to use a built-in API to correctly combine those rules and styles: <a href="../fela/combineRules.html">combineRules</a>.</p>
-<p>With FelaComponent we can leverage that API automatically by passing an array to the <em>style</em> prop.</p>
-<pre class="language-"><code class="lang-javascript"><span class="token keyword">const</span> baseStyle <span class="token operator">=</span> <span class="token punctuation">{</span>
-  backgroundColor<span class="token punctuation">:</span> <span class="token string">&apos;red&apos;</span><span class="token punctuation">,</span>
-  fontSize<span class="token punctuation">:</span> <span class="token number">15</span>
+<span class="token keyword">const</span> renderer <span class="token operator">=</span> <span class="token function">createRenderer</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> <span class="token function-variable function">Head</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>head<span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token function">renderToNodeList</span><span class="token punctuation">(</span>renderer<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">&gt;</span>
+  <span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
-
-<span class="token keyword">const</span> <span class="token function-variable function">Button</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> style<span class="token punctuation">,</span> <span class="token operator">...</span>props <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
-  <span class="token operator">&lt;</span>FelaComponent style<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span>baseStyle<span class="token punctuation">,</span> style<span class="token punctuation">]</span><span class="token punctuation">}</span> <span class="token punctuation">{</span><span class="token operator">...</span>props<span class="token punctuation">}</span> <span class="token keyword">as</span><span class="token operator">=</span><span class="token string">&quot;button&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
-<span class="token punctuation">)</span>
-
-<span class="token keyword">const</span> <span class="token function-variable function">ExtendedButton</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> style<span class="token punctuation">,</span> children <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
-  <span class="token operator">&lt;</span>Button style<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> color<span class="token punctuation">:</span> <span class="token string">&apos;blue&apos;</span> <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>Click<span class="token operator">&lt;</span><span class="token operator">/</span>Button<span class="token operator">&gt;</span>
-<span class="token punctuation">)</span>
 </code></pre>
-<p>The array accepts both style objects, rule functions and even nested arrays again.</p>
 
                                 
                                 </section>
@@ -1317,12 +1186,12 @@ We have to use a built-in API to correctly combine those rules and styles: <a hr
 
             
                 
-                <a href="fe.html" class="navigation navigation-prev " aria-label="Previous page: 6.4.4. fe">
+                <a href="RendererProvider.html" class="navigation navigation-prev " aria-label="Previous page: 6.4.8. RendererProvider">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="FelaTheme.html" class="navigation navigation-next " aria-label="Next page: 6.4.6. FelaTheme">
+                <a href="ThemeProvider.html" class="navigation navigation-next " aria-label="Next page: 6.4.10. ThemeProvider">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1333,7 +1202,7 @@ We have to use a built-in API to correctly combine those rules and styles: <a hr
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.4.5. FelaComponent","level":"1.7.4.5","depth":3,"next":{"title":"6.4.6. FelaTheme","level":"1.7.4.6","depth":3,"path":"docs/api/bindings/FelaTheme.md","ref":"docs/api/bindings/FelaTheme.md","articles":[]},"previous":{"title":"6.4.4. fe","level":"1.7.4.4","depth":3,"path":"docs/api/bindings/fe.md","ref":"docs/api/bindings/fe.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anker-enable","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/robinweser/fela/"},"anker-enable":{},"search":{},"lunr":{"maxIndexSize":1000000},"fontsettings":{"theme":"white","family":"sans","size":2},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"base":"https://github.com/robinweser/fela/tree/master","label":"Edit This Page"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Robin Frischmann <robin@weser.io>","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Fela","language":"en","gitbook":"3.1.0","description":"Official documentation for Fela"},"file":{"path":"docs/api/bindings/FelaComponent.md","mtime":"2020-02-13T14:21:37.949Z","type":"markdown"},"gitbook":{"version":"3.1.0","time":"2020-02-13T14:34:02.002Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.4.9. renderToNodeList","level":"1.7.4.9","depth":3,"next":{"title":"6.4.10. ThemeProvider","level":"1.7.4.10","depth":3,"path":"docs/api/bindings/ThemeProvider.md","ref":"docs/api/bindings/ThemeProvider.md","articles":[]},"previous":{"title":"6.4.8. RendererProvider","level":"1.7.4.8","depth":3,"path":"docs/api/bindings/RendererProvider.md","ref":"docs/api/bindings/RendererProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anker-enable","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/robinweser/fela/"},"anker-enable":{},"search":{},"lunr":{"maxIndexSize":1000000},"fontsettings":{"theme":"white","family":"sans","size":2},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"base":"https://github.com/robinweser/fela/tree/master","label":"Edit This Page"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Robin Frischmann <robin@weser.io>","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Fela","language":"en","gitbook":"3.1.0","description":"Official documentation for Fela"},"file":{"path":"docs/api/bindings/renderToNodeList.md","mtime":"2020-02-13T14:21:37.949Z","type":"markdown"},"gitbook":{"version":"3.1.0","time":"2020-02-13T14:34:02.002Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
