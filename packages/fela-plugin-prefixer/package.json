@@ -1,16 +1,20 @@
 {
   "name": "fela-plugin-prefixer",
-  "version": "11.1.2",
+  "version": "11.2.0",
   "description": "Fela plugin to add vendor prefixes",
   "main": "lib/index.js",
   "module": "es/index.js",
   "jsnext:main": "es/index.js",
   "sideEffects": false,
+  "scripts": {
+    "build:umd": "webpack --config webpack.config.js"
+  },
   "files": [
     "LICENSE",
     "README.md",
     "lib/**",
-    "es/**"
+    "es/**",
+    "umd/**"
   ],
   "repository": "https://github.com/robinweser/fela/",
   "keywords": [
@@ -26,7 +30,7 @@
   "dependencies": {
     "css-in-js-utils": "^3.0.0",
     "fast-loops": "^1.0.0",
-    "fela-plugin-fallback-value": "^11.1.2",
+    "fela-plugin-fallback-value": "^11.2.0",
     "inline-style-prefixer": "^5.1.0",
     "isobject": "^3.0.1"
   },

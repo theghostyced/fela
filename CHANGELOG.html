@@ -1131,8 +1131,52 @@
 <p>With version 10, we introduced synced package versions, which means the Changelog no longer needs to sorted by dates but rather versions again.<br>
 If you&apos;re searching for older logs, please check the <a href="https://github.com/robinweser/fela/blob/8b61fc1845dba982956df0ed4d28eaa39b3c5d1c/CHANGELOG.md" _target="blank">old changelog</a>.</p>
 <h2 id="110">11.0</h2>
+<h3 id="1120">11.2.0</h3>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fela</td>
+<td>(<a href="https://github.com/robinweser/fela/pull/756" _target="blank">#756</a>) Added a <code>generateClassName</code> function to renderer which can now be overwritten</td>
+</tr>
+<tr>
+<td>fela<br>fela-dom<br>react-fela<br>preact-fela<br>infero-fela<br>reason-fela<br>fela-bindings</td>
+<td>(<a href="https://github.com/robinweser/fela/pull/768" _target="blank">#768</a>) Added a new renderer option <code>styleNodeAttributes</code> for adding custom attributes to generated style nodes</td>
+</tr>
+<tr>
+<td>fela-utils</td>
+<td>(<a href="https://github.com/robinweser/fela/pull/766" _target="blank">#766</a>) Fixed IE 11 compatibility issues</td>
+</tr>
+<tr>
+<td>fela-sort-media-query-mobile-first<br>fela-preset-web</td>
+<td>(<a href="https://github.com/robinweser/fela/pull/769" _target="blank">#769</a>) Updated TypeScript definitions</td>
+</tr>
+<tr>
+<td>fela<br>fela-plugin-prefixer<br>react-fela</td>
+<td>(<a href="https://github.com/robinweser/fela/pull/763" _target="blank">#763</a>) Added UMD builds for these specific packages - more to come</td>
+</tr>
+</tbody>
+</table>
 <h3 id="1111--1112">11.1.1 / 11.1.2</h3>
-<p>| react-fela<br>preact-fela<br>infero-fela<br>reason-fela<br>fela-bindings | (<a href="https://github.com/robinweser/fela/pull/765" _target="blank">#765</a>) Fixed some regressions with missing exports concerning <code>renderToNodeList</code> |</p>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>react-fela<br>preact-fela<br>infero-fela<br>reason-fela<br>fela-bindings</td>
+<td>(<a href="https://github.com/robinweser/fela/pull/765" _target="blank">#765</a>) Fixed some regressions with missing exports concerning <code>renderToNodeList</code></td>
+</tr>
+</tbody>
+</table>
 <h3 id="1110">11.1.0</h3>
 <table>
 <thead>
@@ -1615,7 +1659,7 @@ If you&apos;re searching for older logs, please check the <a href="https://githu
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"8. Changelog","level":"1.9","depth":1,"next":{"title":"9. FAQ","level":"1.10","depth":1,"path":"docs/FAQ.md","ref":"docs/FAQ.md","articles":[]},"previous":{"title":"7. Migration Guide","level":"1.8","depth":1,"path":"MIGRATION.md","ref":"MIGRATION.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anker-enable","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/robinweser/fela/"},"anker-enable":{},"search":{},"lunr":{"maxIndexSize":1000000},"fontsettings":{"theme":"white","family":"sans","size":2},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"base":"https://github.com/robinweser/fela/tree/master","label":"Edit This Page"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Robin Frischmann <robin@weser.io>","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Fela","language":"en","gitbook":"3.1.0","description":"Official documentation for Fela"},"file":{"path":"CHANGELOG.md","mtime":"2020-02-14T07:53:19.830Z","type":"markdown"},"gitbook":{"version":"3.1.0","time":"2020-02-14T08:00:30.226Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"8. Changelog","level":"1.9","depth":1,"next":{"title":"9. FAQ","level":"1.10","depth":1,"path":"docs/FAQ.md","ref":"docs/FAQ.md","articles":[]},"previous":{"title":"7. Migration Guide","level":"1.8","depth":1,"path":"MIGRATION.md","ref":"MIGRATION.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anker-enable","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/robinweser/fela/"},"anker-enable":{},"search":{},"lunr":{"maxIndexSize":1000000},"fontsettings":{"theme":"white","family":"sans","size":2},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"base":"https://github.com/robinweser/fela/tree/master","label":"Edit This Page"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Robin Frischmann <robin@weser.io>","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Fela","language":"en","gitbook":"3.1.0","description":"Official documentation for Fela"},"file":{"path":"CHANGELOG.md","mtime":"2020-03-04T08:44:00.218Z","type":"markdown"},"gitbook":{"version":"3.1.0","time":"2020-03-04T08:55:48.243Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
